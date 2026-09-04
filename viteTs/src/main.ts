@@ -18,13 +18,19 @@ async function newData() {
     height: parseInt(data.get('height')!.toString())
   }
 
-  fetch(API_URL, {
+  const response = await fetch(API_URL, {
     method: 'POST',
     body: JSON.stringify(newData),
     headers: {
       'Content-type': 'application/json'
     }
   })
+
+  if (!response.ok) {
+    throw new Error('Invalid response')
+  }
+
+  loadData();
 }
 
 async function loadData() {
