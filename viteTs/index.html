@@ -11,11 +11,12 @@
 
     <h2>New measurements</h2>
 
-    <form action="newdataform">
+    <form id="newdataform">
       <div class="mb-3">
         <label for="inputName" class="label">Name</label>
         <input type="text" name="name" id="inputName" class="form-control">
       </div>
+
       <div class="mb-3">
         <label for="inputGender" class="label">Gender</label>
         <select name="gender" id="inputGender" class="form-control">
@@ -24,14 +25,14 @@
           <option value=" ">N/A</option>
         </select>
       </div>
+
       <div class="mb-3">
         <label for="inputHeight" class="label">Height</label>
         <input type="number" name="height" id="inputHeight" class="form-control">
       </div>
-      <div class="mb-3">
-        <label for="inputDate" class="label">Date</label>
-        <input type="datetime" name="date" id="inputDate" class="form-control">
-      </div>
+
+
+
       <div class="mb-3">
         <button type="submit" class="btn btn-primary">Measure</button>
       </div>

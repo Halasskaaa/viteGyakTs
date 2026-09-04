@@ -6,15 +6,19 @@ const API_URL = 'https://retoolapi.dev/xwsMS7/data';
 
 document.addEventListener('DOMContentLoaded', () => {
   loadData();
+
+  document.getElementById('newdataform')!.addEventListener('submit', newData);
 });
 
-async function newData() {
-  const data = new FormData(document.getElementById('newdataform') as HTMLFormElement);
+async function newData(e: SubmitEvent) {
+  e.preventDefault();
+  const dataForm = document.getElementById('newdataform') as HTMLFormElement;
+  const data = new FormData(dataForm);
   
   const newData: NewMeasurement = {
     gender: data.get('gender')!.toString(),
     name: data.get('name')!.toString(),
-    measurement_date: data.get('measurement_date')!.toString(),
+    measurement_date: new Date().toString(),
     height: parseInt(data.get('height')!.toString())
   }
 
@@ -29,7 +33,7 @@ async function newData() {
   if (!response.ok) {
     throw new Error('Invalid response')
   }
-
+  dataForm.reset();
   loadData();
 }
 
